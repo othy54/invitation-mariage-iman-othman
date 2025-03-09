@@ -124,7 +124,7 @@ onMounted(() => {
     quran.addEventListener('ended', () => {
         animate([
             ['.coran', { opacity: 0 }, { duration: 0.8 }],
-            ['.ann-1', { opacity: [0, 1], y: [40, 0] }, { duration: 1, delay: stagger(0.5) }]
+            ['.ann-1', { opacity: [0, 1], y: [40, 0] }, { duration: 1, delay: stagger(0.2) }]
         ]);
     })
 
@@ -136,7 +136,7 @@ onMounted(() => {
             duration: 0.8, onUpdate: latest => {
                 const words = document.querySelectorAll('.word');
                 animate(words, { opacity: [0, 1], y: [55, 0] }, {
-                    duration: 4, ease: 'easeOut', delay: stagger(0.2), onUpdate: latest => {
+                    duration: 3, ease: 'easeOut', delay: stagger(0.2), onUpdate: latest => {
                         animate('.pass', { opacity: [0, 1] }, { duration: 1 });
                     }
                 })
