@@ -7,8 +7,8 @@
                     src="/images/bg-isl.jpg" alt="">
                 <div>
                     <div class="ann-1 text-[1.4rem]">Ensemble avec leur familles,</div>
-                    <div class="ann-1 text-[3.6rem] mt-14 relative">
-                        <div class="relative z-[2]">
+                    <div class="ann-1 text-[4.5rem] mt-14 relative">
+                        <div class="relative z-[2] name">
                             Iman
                         </div>
                         <div
@@ -16,14 +16,22 @@
                             إيمــان
                         </div>
                     </div>
-                    <div class="ann-1 text-[2.5rem] leading-[2rem] mt-7 mb-2">&</div>
-                    <div class="ann-1 text-[3.6rem] relative">
-                        <div class="relative z-[2]">
+                    <div class="ann-1 text-[3rem] leading-[2rem] mt-5 mb-6 name relative">
+                        <div class="relative z-[2] name">
+                            &
+                        </div>
+                        <div
+                            class="maghribi absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 text-white">
+                            و
+                        </div>
+                    </div>
+                    <div class="ann-1 text-[4.5rem] relative">
+                        <div class="relative z-[2] name">
                             Othman
                         </div>
                         <div
                             class="maghribi absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 text-white">
-                            عـثمــان
+                            عـثمـان
                         </div>
                     </div>
                     <div class="ann-1 mt-12 text-[1.2rem] leading-[2rem]">Ont la joie de vous convier à leur mariage qui
@@ -56,6 +64,10 @@
                         وَمِن ءَايَتِهِۦٓ أَن خَلَقَ لَكُم مِّن أَنفُسِكُم أَزوَجا لِّتَسكُنُواْ إِلَيهَا وَجَعَلَ
                         بَينَكُم
                         مَّوَدَّة وَرَحمَةً إِنَّ فِي ذَٰلِكَ لَأيَت لِّقَوم يَتَفَكَّرُونَ
+                    </div>
+                    <div
+                        class="pass mt-16 px-8 py-3 bg-[#765641] text-white cursor-pointer tracking-widest w-fit mx-auto opacity-0">
+                        Passer
                     </div>
                 </div>
             </div>
@@ -112,9 +124,8 @@ onMounted(() => {
     quran.addEventListener('ended', () => {
         animate([
             ['.coran', { opacity: 0 }, { duration: 0.8 }],
-            ['.ann-1', { opacity: [0, 1], y: [40, 0] }, { duration: 1, delay: stagger(0.2) }]
+            ['.ann-1', { opacity: [0, 1], y: [40, 0] }, { duration: 1, delay: stagger(0.5) }]
         ]);
-
     })
 
     const button = document.querySelector('.button');
@@ -124,11 +135,25 @@ onMounted(() => {
             '.loader', { opacity: 0, pointerEvents: 'none' }, {
             duration: 0.8, onUpdate: latest => {
                 const words = document.querySelectorAll('.word');
-                animate(words, { opacity: [0, 1], y: [55, 0] }, { duration: 10, ease: 'easeOut', delay: stagger(0.5) })
+                animate(words, { opacity: [0, 1], y: [55, 0] }, {
+                    duration: 4, ease: 'easeOut', delay: stagger(0.2), onUpdate: latest => {
+                        animate('.pass', { opacity: [0, 1] }, { duration: 1 });
+                    }
+                })
                 quran.play();
             }
         }
         )
+    })
+
+    const pass = document.querySelector('.pass');
+    pass.addEventListener('click', () => {
+        quran.pause();
+        quran.currentTime = 0;
+        animate([
+            ['.coran', { opacity: 0 }, { duration: 0.8 }],
+            ['.ann-1', { opacity: [0, 1], y: [40, 0] }, { duration: 1, delay: stagger(0.2) }]
+        ]);
     })
 
 
@@ -166,6 +191,10 @@ html {
 .title {
     font-size: 2rem;
     line-height: 3rem;
+}
+
+.name {
+    font-family: Parisienne;
 }
 
 .word {
