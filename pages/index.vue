@@ -5,8 +5,8 @@
                 class="announ w-full bg-[#ccb3a3] min-h-[100dvh] flex justify-center items-center text-center p-5 leading-[1.5rem] absolute left-0 top-0 text-[#271C16]">
                 <img class="absolute w-full h-full object-cover top-0 left-0 opacity-[0.2] mix-blend-overlay"
                     src="/images/bg-isl.jpg" alt="">
-                <div>
-                    <div class="ann-1 text-[1.4rem]">Ensemble avec leur familles,</div>
+                <div class="relative">
+                    <div class="ann-1 text-[1.4rem]">Ensemble avec leurs familles,</div>
                     <div class="ann-1 text-[4.5rem] mt-14 relative">
                         <div class="relative z-[2] name">
                             Iman
@@ -116,17 +116,22 @@ useHead({
 onMounted(() => {
 
     const quran = new Audio('/audio/coran.mp3');
+    const lastStep = () => {
+        animate([
+            ['.coran', { opacity: 0, pointerEvents: 'none' }, {
+                duration: 0.8, onUpdate: latest => {
+                    document.querySelector('.announ').style.zIndex = '20'
+                }
+            }],
+            ['.ann-1', { opacity: [0, 1], y: [40, 0] }, { duration: 1, delay: stagger(0.2) }]
+        ]);
+    }
 
     new SplitType('.title', { types: 'words,lines' });
 
     animationLoader();
 
-    quran.addEventListener('ended', () => {
-        animate([
-            ['.coran', { opacity: 0 }, { duration: 0.8 }],
-            ['.ann-1', { opacity: [0, 1], y: [40, 0] }, { duration: 1, delay: stagger(0.2) }]
-        ]);
-    })
+    quran.addEventListener('ended', lastStep)
 
     const button = document.querySelector('.button');
 
@@ -150,12 +155,8 @@ onMounted(() => {
     pass.addEventListener('click', () => {
         quran.pause();
         quran.currentTime = 0;
-        animate([
-            ['.coran', { opacity: 0 }, { duration: 0.8 }],
-            ['.ann-1', { opacity: [0, 1], y: [40, 0] }, { duration: 1, delay: stagger(0.2) }]
-        ]);
+        lastStep();
     })
-
 
 });
 
