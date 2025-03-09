@@ -2,7 +2,7 @@
     <div class="min-h-[100dvh] bg-[#ccb3a3] ">
         <div>
             <div
-                class="announ w-full bg-[#ccb3a3] min-h-[100dvh] flex justify-center items-center text-center p-5 leading-[1.5rem] absolute left-0 top-0">
+                class="announ w-full bg-[#ccb3a3] min-h-[100dvh] flex justify-center items-center text-center p-5 leading-[1.5rem] absolute left-0 top-0 text-[#271C16]">
                 <img class="absolute w-full h-full object-cover top-0 left-0 opacity-[0.2] mix-blend-overlay"
                     src="/images/bg-isl.jpg" alt="">
                 <div>
@@ -30,12 +30,12 @@
                         aura
                         lieu
                         le :</div>
-                    <div class="ann-1 my-9 text-[3rem] announ__date">
+                    <div class="ann-1 my-9 text-[2.8rem] announ__date">
                         2 Août 2025
                     </div>
                     <div class="text-[1.2rem] ann-1">à la mairie de Lunéville à 14h30</div>
                     <div class="mt-8 ann-1">
-                        La récéption se tiendra à partir de 18h au
+                        La récéption se tiendra à partir de 19h au
                     </div>
                     <div class="ann-1 mt-1 underline underline-offset-4">
                         <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x479480e60cf583df:0xcffa1867a7224163?sa=X&ved=1t:8290&ictx=111"
@@ -48,7 +48,7 @@
                 class="coran text-center bg-[#ccb3a3] w-full min-h-[100dvh] flex justify-center items-center relative p-5 z-[5] absolute left-0 top-0">
                 <img class="absolute w-full h-full object-cover top-0 left-0 opacity-[0.3] mix-blend-overlay"
                     src="/images/bg-isl.jpg" alt="">
-                <div class="relative">
+                <div class="relative color-[#271C16]">
                     <div class="basmala maghribi text-[1.8rem] w-full text-center">
                         بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
                     </div>
@@ -147,6 +147,7 @@ const animationLoader = () => {
 <style>
 :root {
     --cubic: cubic-bezier(0.66, 0, 0.34, 1);
+    --primary-color: #765641;
 }
 
 html {
@@ -164,7 +165,7 @@ html {
 
 .title {
     font-size: 2rem;
-    line-height: 4rem;
+    line-height: 3rem;
 }
 
 .word {
@@ -187,7 +188,7 @@ html {
             font-size: 3.6rem;
             margin-inline: -2px;
             position: relative;
-            color: #765641
+            color: var(--primary-color);
         }
 
         & span {
@@ -198,7 +199,7 @@ html {
 }
 
 .date {
-    letter-spacing: calc(90em / 1000);
+    letter-spacing: -0.0090em;
 }
 
 .announ {
